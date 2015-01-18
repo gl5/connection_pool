@@ -1,7 +1,6 @@
 require_relative 'helper'
 
 class TestConnectionPoolTimedStack < Minitest::Test
-
   def setup
     @stack = ConnectionPool::TimedStack.new { Object.new }
   end
@@ -125,6 +124,4 @@ class TestConnectionPoolTimedStack < Minitest::Test
     refute_empty called
     assert_empty @stack
   end
-
 end
-

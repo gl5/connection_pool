@@ -1,3 +1,3 @@
-class ConnectionPool
-  VERSION = "2.1.0"
+class ConnectionPool # rubocop:disable Style/Documentation
+  VERSION = '2.1.0'
 end
