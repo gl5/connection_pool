@@ -83,7 +83,7 @@ class TestConnectionPoolTimedStack < Minitest::Test
   end
 
   def test_pop_shutdown
-    @stack.shutdown { }
+    @stack.shutdown {}
 
     assert_raises ConnectionPool::PoolShuttingDownError do
       @stack.pop

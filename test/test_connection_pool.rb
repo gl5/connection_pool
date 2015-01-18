@@ -179,7 +179,7 @@ class TestConnectionPool < Minitest::Test
 
   def test_returns_value
     pool = ConnectionPool.new(:timeout => 0, :size => 1) { Object.new }
-    assert_equal 1, pool.with {|o| 1 }
+    assert_equal 1, pool.with { |o| 1 }
   end
 
   def test_checkin_never_checkout
@@ -363,7 +363,7 @@ class TestConnectionPool < Minitest::Test
   def test_raises_error_after_shutting_down
     pool = ConnectionPool.new(:size => 1) { true }
 
-    pool.shutdown { }
+    pool.shutdown {}
 
     assert_raises ConnectionPool::PoolShuttingDownError do
       pool.checkout
@@ -395,7 +395,7 @@ class TestConnectionPool < Minitest::Test
   end
 
   def test_raises_an_error_if_shutdown_is_called_without_a_block
-    pool = ConnectionPool.new(:size => 1) { }
+    pool = ConnectionPool.new(:size => 1) {}
 
     assert_raises ArgumentError do
       pool.shutdown
@@ -446,7 +446,7 @@ class TestConnectionPool < Minitest::Test
       end
     end
 
-    assert Thread.new { wrapper.with { } }.join
+    assert Thread.new { wrapper.with {} }.join
   end
 
   class ConnWithEval
